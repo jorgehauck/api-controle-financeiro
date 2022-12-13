@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import static  java.util.stream.Collectors.toList;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -39,7 +39,7 @@ public class ReceitasDTO {
 		descricao = receitas.getDescricao();
 		valor = receitas.getValor();
 		data = receitas.getData().format(formatter);
-		despesas = receitas.getDespesas().stream().map(x -> new DespesasDTO(x)).collect(Collectors.toList());
+		despesas = receitas.getDespesas().stream().map(x -> new DespesasDTO(x)).collect(toList());
 	}
 	
 	public String getDescricao() {
