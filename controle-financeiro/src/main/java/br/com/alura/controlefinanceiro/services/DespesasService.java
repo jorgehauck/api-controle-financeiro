@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -74,7 +75,7 @@ public class DespesasService {
 	public List<DespesasDTO> getDescricaoDespesas(String descricao) {
 		System.out.println(descricao);
 		List<Despesas> despesa = despesasRepository.getDescricaoDespesas(descricao);
-		List<DespesasDTO> despesaDTO = despesa.stream().map(dep -> new DespesasDTO(dep)).toList();
+		List<DespesasDTO> despesaDTO = despesa.stream().map(dep -> new DespesasDTO(dep)).collect(Collectors.toList());
 
 		for (Despesas dep : despesa) {
 			if (dep.getDescricao() == null) {
