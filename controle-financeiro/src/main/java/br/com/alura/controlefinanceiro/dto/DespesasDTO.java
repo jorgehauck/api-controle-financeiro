@@ -1,5 +1,6 @@
 package br.com.alura.controlefinanceiro.dto;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -28,6 +29,8 @@ public class DespesasDTO {
 	
 	private Categoria categoria;
 	
+	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	
 	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
 	public DespesasDTO() {}
@@ -35,7 +38,7 @@ public class DespesasDTO {
 	public DespesasDTO(String descricao, Double valor, String data, Long receitaId, Categoria categoria) {
 		this.descricao = descricao;
 		this.valor = valor;
-		this.data = data.formatted(formatter);
+		this.data = data.formatted(sdf);
 		this.categoria = categoria;
 	}
 	

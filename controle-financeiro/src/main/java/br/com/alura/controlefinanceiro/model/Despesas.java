@@ -91,10 +91,4 @@ public class Despesas implements Serializable {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-
-	@Override
-	public String toString() {
-		return "Despesas [id=" + id + ", descricao=" + descricao + ", valor=" + valor + ", data=" + data + ", receitas="
-				+ receitas + ", categoria=" + categoria + "]";
-	}
 }
