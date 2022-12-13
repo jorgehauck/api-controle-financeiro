@@ -45,7 +45,7 @@ public class WebSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 	
-	@Bean
+	
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().antMatchers("/**.html", "/v2/api-docs", "/webjars/**","/configuration/**", "/swagger-resources/**");
     }
