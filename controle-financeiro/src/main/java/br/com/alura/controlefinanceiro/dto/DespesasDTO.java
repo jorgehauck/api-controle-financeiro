@@ -29,13 +29,13 @@ public class DespesasDTO {
 	private Categoria categoria;
 	
 	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	
+		
 	public DespesasDTO() {}
 
 	public DespesasDTO(String descricao, Double valor, String data, Long receitaId, Categoria categoria) {
 		this.descricao = descricao;
 		this.valor = valor;
-		this.data = data.formatted(formatter);
+		this.data = data;
 		this.categoria = categoria;
 	}
 	
@@ -86,7 +86,7 @@ public class DespesasDTO {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-
+	
 	public Despesas toDespesas() {
 		Despesas despesas = new Despesas();
 		despesas.setDescricao(descricao);
