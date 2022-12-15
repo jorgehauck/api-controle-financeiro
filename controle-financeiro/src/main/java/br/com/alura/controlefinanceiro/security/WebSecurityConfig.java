@@ -15,12 +15,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import br.com.alura.controlefinanceiro.repositories.UsuarioRepository;
+
 @EnableWebSecurity
 @Configuration
 public class WebSecurityConfig {
 
 	@Autowired
-	private AutenticacaoViaTokenFilter autenticacaoViaTokenFilter;
+	private TokenService tokenService;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 	
 	@Bean
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
@@ -36,7 +41,7 @@ public class WebSecurityConfig {
 		 .anyRequest().authenticated()
 		 .and().csrf().disable()
 		 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-		 .and().addFilterBefore(autenticacaoViaTokenFilter, UsernamePasswordAuthenticationFilter.class);
+		 .and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService, usuarioRepository), UsernamePasswordAuthenticationFilter.class);
 		 return http.build();
 	}
 	
