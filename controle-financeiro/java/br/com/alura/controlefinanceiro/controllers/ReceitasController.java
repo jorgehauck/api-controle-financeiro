@@ -38,7 +38,7 @@ public class ReceitasController {
 		return ResponseEntity.created(uri).body(rec);
 	}
 	
-	@GetMapping("/lista-receitas")
+	@GetMapping("/listar")
 	public ResponseEntity<Page<ReceitasDTO>> listarReceitas(Pageable pageable) {
 		Page<ReceitasDTO> receitas = service.getListaReceitas(pageable);
 		return ResponseEntity.ok(receitas);
