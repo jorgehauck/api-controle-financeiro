@@ -38,7 +38,7 @@ public class WebSecurityConfig {
 		 http.authorizeHttpRequests()
 		 .antMatchers(HttpMethod.POST, "/cadastrar").permitAll()
 		 .antMatchers(HttpMethod.POST, "/auth").permitAll()
-		 .antMatchers(HttpMethod.GET, "/receitas/listar-receitas").permitAll()
+		 .antMatchers(HttpMethod.GET, "/receitas/listar").permitAll()
 		 .anyRequest().authenticated()
 		 .and().csrf().disable()
 		 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
