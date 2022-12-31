@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import com.controle.financeiro.project.enums.Categoria;
 
 @Entity
-@Table(name = "despesas")
+@Table(name = "tb_despesas")
 public class Despesas implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -34,6 +34,15 @@ public class Despesas implements Serializable {
 	private Categoria categoria;
 	
 	public Despesas() {}
+	
+	public Despesas(Long id, String descricao, Double valor, LocalDate data, Receitas receitas, Categoria categoria) {
+		this.id = id;
+		this.descricao = descricao;
+		this.valor = valor;
+		this.data = data;
+		this.receitas = receitas;
+		this.categoria = categoria;
+	}
 
 	public Long getId() {
 		return id;
