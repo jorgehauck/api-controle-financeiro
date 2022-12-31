@@ -16,12 +16,12 @@ public interface DespesasRepository extends JpaRepository<Despesas, Long>{
 
 List<Despesas> findByDescricao(String descricao);
 	
-	@Query(value = "select d FROM \"Despesas\" d where d.descricao like %:descricao%")
+	@Query(value = "select d FROM Despesas d where d.descricao like %:descricao%")
 	List<Despesas> getDescricaoDespesas(String descricao);
 	
-	@Query(value = "SELECT receitas_id, d.id, d.categoria, d.descricao, d.valor, d.data FROM \"DESPESAS\" d WHERE MONTH(d.data) = :mes AND YEAR(d.data) = :ano", nativeQuery = true)
+	@Query(value = "SELECT receitas_id, d.id, d.categoria, d.descricao, d.valor, d.data FROM DESPESAS d WHERE MONTH(d.data) = :mes AND YEAR(d.data) = :ano", nativeQuery = true)
 	Page<Despesas> getFindByAnoMesDespesas(@Param(value = "mes") Integer mes, @Param(value = "ano") Integer ano, Pageable pageable);
 	
-	@Query(value = "select obj FROM \"Despesas\" obj WHERE YEAR(obj.data) = :ano AND MONTH(obj.data) = :mes")
+	@Query(value = "select obj FROM Despesas obj WHERE YEAR(obj.data) = :ano AND MONTH(obj.data) = :mes")
 	List<Despesas> getResumoDespesas(@Param("ano") Integer ano, @Param("mes") Integer mes);
 }
