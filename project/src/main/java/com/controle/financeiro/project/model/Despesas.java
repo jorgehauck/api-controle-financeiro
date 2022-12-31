@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import com.controle.financeiro.project.enums.Categoria;
 
 @Entity
-@Table(name = "despesas")
+@Table(name = "despesas", schema = "db_controle_financeiro")
 public class Despesas implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
