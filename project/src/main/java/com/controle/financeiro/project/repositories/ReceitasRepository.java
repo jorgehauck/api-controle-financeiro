@@ -21,7 +21,7 @@ List<Receitas> findByDescricao(String descricao);
 	@Query(value = "select obj FROM Receitas obj LEFT JOIN FETCH obj.despesas WHERE obj.descricao like %:descricao%")
 	List<Receitas> getDescricaoReceitas(@Param("descricao") String descricao, Pageable pageable);
 	
-	@Query(value = "select obj FROM db_controle_financeiro.Receitas obj WHERE YEAR(obj.data) = :ano AND MONTH(obj.data) = :mes")
+	@Query(value = "select obj FROM Receitas obj WHERE YEAR(obj.data) = :ano AND MONTH(obj.data) = :mes")
 	List<Receitas> getResumoReceitas(@Param("ano") Integer ano, @Param("mes") Integer mes);
 	
 	@Query(value = "select obj FROM Receitas obj LEFT JOIN FETCH obj.despesas WHERE obj.id = :id")
